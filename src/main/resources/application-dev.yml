@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: lixinxin
+    password: LIxinxin**252511
+    url: jdbc:mysql://39.107.225.207/lovenote?characterEncoding=utf-8&useSSL=false
+  jpa:
+    show-sql: true
+    hibernate:
+          use-new-id-generator-mappings: false
+
+  redis:
+      host: 39.107.225.207
+      port: 6379
+
+server:
+  servlet:
+    context-path: /lovenote
+
+
+
+#project-url:
+#  wechatMpAuthorize: http://sell.natapp4.cc
+#  wechatOpenAuthorize: http://sell.natapp4.cc
+#  sell: http://sell.natapp4.cc
