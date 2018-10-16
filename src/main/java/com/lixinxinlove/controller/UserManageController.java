@@ -3,10 +3,13 @@ package com.lixinxinlove.controller;
 
 import com.lixinxinlove.entity.UserInfo;
 import com.lixinxinlove.repository.UserInfoRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -17,6 +20,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/user/manage")
+@Slf4j
 public class UserManageController {
 
 
@@ -37,6 +41,19 @@ public class UserManageController {
 
     @GetMapping("/index")
     public ModelAndView index(Map<String, Object> map) {
+        return new ModelAndView("user/index", map);
+    }
+
+
+    @PostMapping("/login")
+    public ModelAndView login(
+            @RequestParam("phone") String phone
+            , @RequestParam("password") String password
+            , Map<String, Object> map) {
+
+        log.error("phone=={}", phone);
+        log.error("password=={}", password);
+
         return new ModelAndView("user/index", map);
     }
 

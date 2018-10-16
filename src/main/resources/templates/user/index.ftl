@@ -8,15 +8,14 @@
 
             <h2>登录</h2>
 
-
-            <form role="form">
+            <form role="form"  action="/lovenote/user/manage/login" method="post">
                 <div class="form-group">
                     <label for="exampleInputEmail1">手机号</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1"/>
+                    <input type="text" class="form-control" name="phone"/>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">密码</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1"/>
+                    <input   type="text" class="form-control" name="password" />
                 </div>
                 <div class="checkbox">
                     <label><input type="checkbox"/>记住密码</label>
