@@ -34,6 +34,4 @@ public class NoteManageController {
         map.put("noteList", noteList);
         return new ModelAndView("note/list", map);
     }
-
-
 }

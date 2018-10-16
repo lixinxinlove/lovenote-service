@@ -34,4 +34,10 @@ public class UserManageController {
         return new ModelAndView("user/list", map);
     }
 
+
+    @GetMapping("/index")
+    public ModelAndView index(Map<String, Object> map) {
+        return new ModelAndView("user/index", map);
+    }
+
 }
