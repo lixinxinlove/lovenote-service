@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -45,14 +44,16 @@ public class UserManageController {
     }
 
 
+    /**
+     * 表单参数的传递
+     */
+    // @RequestParam("phone") String phone
+    // @RequestParam("password") String password
     @PostMapping("/login")
-    public ModelAndView login(
-            @RequestParam("phone") String phone
-            , @RequestParam("password") String password
-            , Map<String, Object> map) {
+    public ModelAndView login(UserInfo user, Map<String, Object> map) {
 
-        log.error("phone=={}", phone);
-        log.error("password=={}", password);
+        log.error("phone=={}", user.getPhone());
+        log.error("password=={}", user.getPassword());
 
         return new ModelAndView("user/index", map);
     }
