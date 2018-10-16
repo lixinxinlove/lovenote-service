@@ -19,6 +19,7 @@
                             <th>用户名</th>
                             <th>性别</th>
                             <th>电话</th>
+                            <th>邮箱</th>
                             <th>地址</th>
                             <th>创建时间</th>
                             <th>修改时间</th>
@@ -33,6 +34,7 @@
                             <td>${user.userName}</td>
                             <td>${user.sex}</td>
                             <td>${user.phone}</td>
+                            <td>${user.email}</td>
                             <td>${user.address}</td>
                             <td>${user.createTime}</td>
                             <td>${user.updateTime}</td>

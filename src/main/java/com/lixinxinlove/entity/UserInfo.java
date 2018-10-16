@@ -17,16 +17,26 @@ public class UserInfo {
 
     private String phone;
 
-    /**性别0女1男2中性'*/
+    private String email;
+
+    private String password;
+
+    /**
+     * 性别0女1男2中性'
+     */
     private Integer sex;
 
     private String address;
 
     private String userIcon;
 
-    /** 创建时间. */
+    /**
+     * 创建时间.
+     */
     private Date createTime;
-    /** 更新时间. */
+    /**
+     * 更新时间.
+     */
     private Date updateTime;
 
 
