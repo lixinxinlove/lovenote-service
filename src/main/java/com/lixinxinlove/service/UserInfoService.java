@@ -16,6 +16,8 @@ public interface UserInfoService {
 
     List<UserInfo> findAll();
 
+    UserInfo findOneByPhoneAndPassword(String phone,String password);
+
     Page<UserInfo> findAll(Pageable pageable);
 
     /**

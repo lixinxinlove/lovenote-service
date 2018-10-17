@@ -8,9 +8,7 @@ import com.lixinxinlove.vo.ResultVO;
 import com.lixinxinlove.vo.UserInfoOV;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +23,6 @@ public class UserInfoController {
     @GetMapping("/list")
     public ResultVO<List<UserInfoOV>> list() {
 
-
         List<UserInfo> userInfoList = userInfoService.findAll();
 
         List<UserInfoOV> userInfoOVList = new ArrayList<>();
@@ -36,5 +33,21 @@ public class UserInfoController {
             userInfoOVList.add(userInfoOV);
         }
         return ResultVOUtil.success(userInfoOVList);
+    }
+
+
+    @PostMapping("/login")
+    public ResultVO<List<UserInfoOV>> login(@RequestParam("phone") String phone,
+                                            @RequestParam("password") String password) {
+
+        UserInfoOV userInfoOV = new UserInfoOV();
+        UserInfo userInfo = userInfoService.findOneByPhoneAndPassword(phone, password);
+
+        if (userInfo==null){
+            return ResultVOUtil.error(11,"密码或手机号错误");
+        }else {
+            BeanUtils.copyProperties(userInfo, userInfoOV);
+            return ResultVOUtil.success(userInfoOV);
+        }
     }
 }
