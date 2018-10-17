@@ -2,12 +2,14 @@ package com.lixinxinlove.aspect;
 
 
 import com.lixinxinlove.constant.CookieConstant;
+import com.lixinxinlove.constant.RedisConstant;
 import com.lixinxinlove.utils.CookieUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -38,10 +40,10 @@ public class NoteAuthorizeAspect {
         log.error("url={}", request.getRequestURI());
 
         //method
-        log.error("method={}",request.getMethod());
+        log.error("method={}", request.getMethod());
 
         //ip
-        log.error("ip={}",request.getRemoteAddr());
+        log.error("ip={}", request.getRemoteAddr());
 
         //查询cookie
         Cookie cookie = CookieUtil.get(request, CookieConstant.TOKEN);
@@ -62,10 +64,19 @@ public class NoteAuthorizeAspect {
     @After("verify()")
     public void log() {
         log.error("log()");
+
+        //去redis里查询
+        String tokenValue = redisTemplate.opsForValue().get(String.format(RedisConstant.TOKEN_PREFIX, "lixinxin"));
+        if (StringUtils.isEmpty(tokenValue)) {
+            log.error("【登录校验】Redis中查不到token");
+        } else {
+            log.error("【登录校验】Redis里的token=" + tokenValue);
+        }
+
     }
 
     @AfterReturning("verify()")
-    public void doAfterReturning(){
+    public void doAfterReturning() {
 
     }
 
