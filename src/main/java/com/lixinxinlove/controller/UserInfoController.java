@@ -60,7 +60,7 @@ public class UserInfoController {
         String mPhone = phone;
         String token = UUID.randomUUID().toString();
         Integer expire = RedisConstant.EXPIRE;
-        redisTemplate.opsForValue().set(String.format(RedisConstant.TOKEN_PREFIX, "lixinxin"), mPhone, expire, TimeUnit.SECONDS);
+        redisTemplate.opsForValue().set(String.format(RedisConstant.TOKEN_PREFIX, mPhone), mPhone, expire, TimeUnit.SECONDS);
 
         if (userInfo == null) {
             return ResultVOUtil.error(11, "密码或手机号错误");
