@@ -59,7 +59,7 @@ public class UserInfoController {
 
 
         if (userInfo == null) {
-            return ResultVOUtil.error(11, "密码或手机号错误");
+            return ResultVOUtil.error(UserEnum.LOGIN_FAIL.getCode(), UserEnum.LOGIN_FAIL.getMessage());
         } else {
             String mPhone = phone;
             String token = UUID.randomUUID().toString();
