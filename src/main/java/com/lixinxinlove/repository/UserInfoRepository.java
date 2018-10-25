@@ -13,6 +13,13 @@ public interface UserInfoRepository extends JpaRepository<UserInfo, String> {
 
     List<UserInfo> findByUserId(String userId);
 
-    UserInfo  findOneByPhoneAndPassword(String phone,String password);
+    UserInfo findOneByPhoneAndPassword(String phone, String password);
+
+    /**
+     * 通过手机号查询
+     * @param phone
+     * @return
+     */
+    UserInfo findOneByPhone(String phone);
 
 }

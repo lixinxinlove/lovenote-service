@@ -35,6 +35,11 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
     @Override
+    public UserInfo findOneByPhone(String phone) {
+        return repository.findOneByPhone(phone);
+    }
+
+    @Override
     public Page<UserInfo> findAll(Pageable pageable) {
         return repository.findAll(pageable);
     }

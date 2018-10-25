@@ -18,6 +18,8 @@ public interface UserInfoService {
 
     UserInfo findOneByPhoneAndPassword(String phone,String password);
 
+    UserInfo findOneByPhone(String phone);
+
     Page<UserInfo> findAll(Pageable pageable);
 
     /**
