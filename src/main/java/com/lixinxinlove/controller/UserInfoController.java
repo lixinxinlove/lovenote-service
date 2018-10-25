@@ -53,22 +53,22 @@ public class UserInfoController {
     public ResultVO<List<UserInfoOV>> login(@RequestParam("phone") String phone,
                                             @RequestParam("password") String password) {
 
-        log.error("phone=={}", phone);
-        log.error("password=={}", password);
-
 
         UserInfoOV userInfoOV = new UserInfoOV();
         UserInfo userInfo = userInfoService.findOneByPhoneAndPassword(phone, password);
 
-        String mPhone = phone;
-        String token = UUID.randomUUID().toString();
-        Integer expire = RedisConstant.EXPIRE;
-        redisTemplate.opsForValue().set(String.format(RedisConstant.TOKEN_PREFIX, mPhone), mPhone, expire, TimeUnit.SECONDS);
 
         if (userInfo == null) {
             return ResultVOUtil.error(11, "密码或手机号错误");
         } else {
+            String mPhone = phone;
+            String token = UUID.randomUUID().toString();
+            Integer expire = RedisConstant.EXPIRE;
+
             BeanUtils.copyProperties(userInfo, userInfoOV);
+            userInfoOV.setToken(token);
+            redisTemplate.opsForValue().set(String.format(RedisConstant.TOKEN_PREFIX, mPhone), token, expire, TimeUnit.SECONDS);
+
             return ResultVOUtil.success(userInfoOV);
         }
     }

@@ -14,11 +14,15 @@ public class UserInfoOV {
     //邮箱
     private String email;
 
-    /**性别0女1男2中性'*/
+    /**
+     * 性别0女1男2中性'
+     */
     private Integer sex;
 
     private String address;
 
     private String userIcon;
+
+    private String token;
 
 }
