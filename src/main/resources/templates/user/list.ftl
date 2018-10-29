@@ -5,7 +5,7 @@
 <div id="wrapper" class="toggled">
 
 <#--边栏sidebar-->
-    <#include "../common/nav.ftl">
+<#include "../common/nav.ftl">
 
 <#--主要内容content-->
     <div id="page-content-wrapper">
@@ -38,7 +38,7 @@
                             <td>${user.address}</td>
                             <td>${user.createTime}</td>
                             <td>${user.updateTime}</td>
-                            <td><a href="/lovenote/note/manage/index?categoryId=${user.userId}">修改</a></td>
+                            <td><a href="/lovenote/user/manage/edit?userId=${user.userId}">修改</a></td>
                         </tr>
                         </#list>
                         </tbody>

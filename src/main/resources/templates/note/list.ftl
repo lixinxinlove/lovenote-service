@@ -32,7 +32,7 @@
                             <td>${note.noteText}</td>
                             <td>${note.createTime}</td>
                             <td>${note.updateTime}</td>
-                            <td><a href="/lovenote/note/manage/index?categoryId=${note.noteId}">修改</a></td>
+                            <td><a href="/lovenote/note/manage/edit?userId=${note.noteId}">修改</a></td>
                         </tr>
                         </#list>
                         </tbody>
