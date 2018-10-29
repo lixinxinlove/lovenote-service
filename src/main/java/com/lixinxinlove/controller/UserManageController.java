@@ -55,7 +55,8 @@ public class UserManageController {
         log.error("phone=={}", user.getPhone());
         log.error("password=={}", user.getPassword());
 
-        return new ModelAndView("user/index", map);
+       // return new ModelAndView("user/list", map);
+        return list(map);
     }
 
 }
