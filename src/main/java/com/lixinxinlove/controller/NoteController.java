@@ -37,4 +37,22 @@ public class NoteController {
         return ResultVOUtil.success(noteOVList);
     }
 
+
+    //获取用户下所有的记录
+    @GetMapping("/notes")
+    public ResultVO<List<NoteOV>> noteList(String userId) {
+
+        List<Note> noteList = userInfoService.findAllByUserId(userId);
+
+        List<NoteOV> noteOVList = new ArrayList<>();
+
+        for (Note note : noteList) {
+            NoteOV noteOV = new NoteOV();
+            BeanUtils.copyProperties(note, noteOV);
+            noteOVList.add(noteOV);
+        }
+        return ResultVOUtil.success(noteOVList);
+    }
+
+
 }
