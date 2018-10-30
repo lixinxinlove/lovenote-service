@@ -8,4 +8,6 @@ import java.util.List;
 public interface NoteRepository extends JpaRepository<Note,Integer> {
 
     List<Note> findByUserId (String userId);
+
+    Note findByNoteId (Integer noteId);
 }

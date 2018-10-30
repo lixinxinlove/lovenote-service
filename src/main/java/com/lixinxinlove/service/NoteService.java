@@ -12,9 +12,9 @@ import java.util.List;
 public interface NoteService {
 
 
-
-
     Note findOne(Integer noteId);
+
+    Note findByNoteId(Integer noteId);
 
     List<Note> findAll();
 

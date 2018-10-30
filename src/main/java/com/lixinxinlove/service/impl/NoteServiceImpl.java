@@ -24,6 +24,11 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
+    public Note findByNoteId(Integer noteId) {
+        return repository.findByNoteId(noteId);
+    }
+
+    @Override
     public List<Note> findAll() {
         return repository.findAll();
     }
