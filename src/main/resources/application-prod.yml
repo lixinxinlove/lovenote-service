@@ -18,7 +18,6 @@ server:
     context-path: /lovenote
 
 
-
 #project-url:
 #  wechatMpAuthorize: http://sell.natapp4.cc
 #  wechatOpenAuthorize: http://sell.natapp4.cc
