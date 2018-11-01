@@ -17,6 +17,10 @@ server:
   servlet:
     context-path: /lovenote
 
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+
 
 #project-url:
 #  wechatMpAuthorize: http://sell.natapp4.cc

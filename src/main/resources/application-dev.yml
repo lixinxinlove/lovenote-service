@@ -13,18 +13,19 @@ spring:
       host: 39.107.225.207
       port: 6379
 
-
 server:
   servlet:
     context-path: /lovenote
 
 
-
 # 配置日志
-
 logging:
   level:
     com.lixinxinlove.entity.mapper: trace
+
+# 配置mapper路径
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
 
 
 #project-url:

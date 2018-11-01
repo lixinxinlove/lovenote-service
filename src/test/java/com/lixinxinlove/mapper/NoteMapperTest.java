@@ -76,4 +76,12 @@ public class NoteMapperTest {
     }
 
 
+    @Test
+    public void selectByNoteId() {
+        Note note = mapper.selectByNoteId(1);
+        System.out.println(note.toString());
+        Assert.assertEquals(1, note.getNoteId().intValue());
+    }
+
+
 }
