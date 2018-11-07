@@ -43,7 +43,6 @@ public interface NoteMapper {
     int deleteByNoteId(Integer noteId);
 
 
-
     Note selectByNoteId(Integer noteId);
 
 }
