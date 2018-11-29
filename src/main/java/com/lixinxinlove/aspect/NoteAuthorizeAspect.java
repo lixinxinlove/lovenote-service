@@ -27,7 +27,7 @@ public class NoteAuthorizeAspect {
 
     //切点
     @Pointcut("execution(public * com.lixinxinlove.controller.User*.*(..))" +
-            "&& !execution(public * com.lixinxinlove.controller.UserInfoController.*(..))")
+            "&& !execution(public * com.lixinxinlove.controller.NoteUserController.*(..))")
     public void verify() {
     }
 

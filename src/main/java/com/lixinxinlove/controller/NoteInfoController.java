@@ -1,10 +1,10 @@
 package com.lixinxinlove.controller;
 
 
-import com.lixinxinlove.entity.Note;
-import com.lixinxinlove.service.NoteService;
+import com.lixinxinlove.entity.NoteInfo;
+import com.lixinxinlove.service.NoteInfoService;
 import com.lixinxinlove.utils.ResultVOUtil;
-import com.lixinxinlove.vo.NoteOV;
+import com.lixinxinlove.vo.NoteInfoOV;
 import com.lixinxinlove.vo.ResultVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,20 +17,20 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/note")
-public class NoteController {
+public class NoteInfoController {
 
     @Autowired
-    private NoteService userInfoService;
+    private NoteInfoService userInfoService;
 
     @GetMapping("/list")
-    public ResultVO<List<NoteOV>> list() {
+    public ResultVO<List<NoteInfoOV>> list() {
 
-        List<Note> noteList = userInfoService.findAll();
+        List<NoteInfo> noteList = userInfoService.findAll();
 
-        List<NoteOV> noteOVList = new ArrayList<>();
+        List<NoteInfoOV> noteOVList = new ArrayList<>();
 
-        for (Note note : noteList) {
-            NoteOV noteOV = new NoteOV();
+        for (NoteInfo note : noteList) {
+            NoteInfoOV noteOV = new NoteInfoOV();
             BeanUtils.copyProperties(note, noteOV);
             noteOVList.add(noteOV);
         }
@@ -40,14 +40,14 @@ public class NoteController {
 
     //获取用户下所有的记录
     @GetMapping("/notes")
-    public ResultVO<List<NoteOV>> noteList(String userId) {
+    public ResultVO<List<NoteInfoOV>> noteList(String userId) {
 
-        List<Note> noteList = userInfoService.findAllByUserId(userId);
+        List<NoteInfo> noteList = userInfoService.findAllByUserId(userId);
 
-        List<NoteOV> noteOVList = new ArrayList<>();
+        List<NoteInfoOV> noteOVList = new ArrayList<>();
 
-        for (Note note : noteList) {
-            NoteOV noteOV = new NoteOV();
+        for (NoteInfo note : noteList) {
+            NoteInfoOV noteOV = new NoteInfoOV();
             BeanUtils.copyProperties(note, noteOV);
             noteOVList.add(noteOV);
         }

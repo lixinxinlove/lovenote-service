@@ -2,13 +2,13 @@ package com.lixinxinlove.controller;
 
 
 import com.lixinxinlove.constant.RedisConstant;
-import com.lixinxinlove.entity.UserInfo;
+import com.lixinxinlove.entity.NoteUser;
 import com.lixinxinlove.enums.UserEnum;
-import com.lixinxinlove.service.UserInfoService;
+import com.lixinxinlove.service.NoteUserService;
 import com.lixinxinlove.utils.ResultVOUtil;
 import com.lixinxinlove.utils.UserIdUtil;
 import com.lixinxinlove.vo.ResultVO;
-import com.lixinxinlove.vo.UserInfoOV;
+import com.lixinxinlove.vo.NoteUserOV;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,24 +24,24 @@ import java.util.concurrent.TimeUnit;
 @RestController
 @RequestMapping("/user")
 @Slf4j
-public class UserInfoController {
+public class NoteUserController {
 
     @Autowired
-    private UserInfoService userInfoService;
+    private NoteUserService userInfoService;
 
     @Autowired
     private StringRedisTemplate redisTemplate;
 
 
     @GetMapping("/list")
-    public ResultVO<List<UserInfoOV>> list() {
+    public ResultVO<List<NoteUserOV>> list() {
 
-        List<UserInfo> userInfoList = userInfoService.findAll();
+        List<NoteUser> userInfoList = userInfoService.findAll();
 
-        List<UserInfoOV> userInfoOVList = new ArrayList<>();
+        List<NoteUserOV> userInfoOVList = new ArrayList<>();
 
-        for (UserInfo userInfo : userInfoList) {
-            UserInfoOV userInfoOV = new UserInfoOV();
+        for (NoteUser userInfo : userInfoList) {
+            NoteUserOV userInfoOV = new NoteUserOV();
             BeanUtils.copyProperties(userInfo, userInfoOV);
             userInfoOVList.add(userInfoOV);
         }
@@ -50,12 +50,12 @@ public class UserInfoController {
 
 
     @PostMapping("/login")
-    public ResultVO<List<UserInfoOV>> login(@RequestParam("phone") String phone,
+    public ResultVO<List<NoteUserOV>> login(@RequestParam("phone") String phone,
                                             @RequestParam("password") String password) {
 
 
-        UserInfoOV userInfoOV = new UserInfoOV();
-        UserInfo userInfo = userInfoService.findOneByPhoneAndPassword(phone, password);
+        NoteUserOV userInfoOV = new NoteUserOV();
+        NoteUser userInfo = userInfoService.findOneByPhoneAndPassword(phone, password);
 
 
         if (userInfo == null) {
@@ -82,15 +82,15 @@ public class UserInfoController {
      * @return
      */
     @PostMapping("/register")
-    public ResultVO<List<UserInfoOV>> register(@RequestParam("phone") String phone, @RequestParam("password") String password) {
+    public ResultVO<List<NoteUserOV>> register(@RequestParam("phone") String phone, @RequestParam("password") String password) {
         //1.查询手机号是否注册过
-        UserInfo userInfo = userInfoService.findOneByPhone(phone);
+        NoteUser userInfo = userInfoService.findOneByPhone(phone);
         if (userInfo != null) {
             return ResultVOUtil.error(UserEnum.USER_EXIST.getCode(), UserEnum.USER_EXIST.getMessage());
         } else {
-            UserInfoOV userInfoOV = new UserInfoOV();
+            NoteUserOV userInfoOV = new NoteUserOV();
 
-            UserInfo user = new UserInfo();
+            NoteUser user = new NoteUser();
             user.setUserId(UserIdUtil.genUniqueUserId());
             user.setUserName(phone);
             user.setPhone(phone);

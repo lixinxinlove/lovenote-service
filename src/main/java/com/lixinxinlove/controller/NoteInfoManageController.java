@@ -1,9 +1,9 @@
 package com.lixinxinlove.controller;
 
 
-import com.lixinxinlove.entity.Note;
-import com.lixinxinlove.form.NoteForm;
-import com.lixinxinlove.service.impl.NoteServiceImpl;
+import com.lixinxinlove.entity.NoteInfo;
+import com.lixinxinlove.form.NoteInfoForm;
+import com.lixinxinlove.service.impl.NoteInfoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,11 +23,11 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/note/manage")
-public class NoteManageController {
+public class NoteInfoManageController {
 
 
     @Autowired
-    private NoteServiceImpl noteService;
+    private NoteInfoServiceImpl noteService;
 
     /**
      * @param map
@@ -35,23 +35,23 @@ public class NoteManageController {
      */
     @GetMapping("/list")
     public ModelAndView list(Map<String, Object> map) {
-        List<Note> noteList = noteService.findAll();
+        List<NoteInfo> noteList = noteService.findAll();
         map.put("noteList", noteList);
         return new ModelAndView("note/list", map);
     }
 
     @GetMapping("/index")
     public ModelAndView index(@RequestParam(value = "noteId", required = false) Integer noteId, Map<String, Object> map) {
-        Note note = noteService.findByNoteId(noteId);
+        NoteInfo note = noteService.findByNoteId(noteId);
         map.put("note", note);
         return new ModelAndView("note/index", map);
     }
 
 
     @PostMapping("/save")
-    public ModelAndView postEdit(@Valid NoteForm noteForm, Map<String, Object> map) {
+    public ModelAndView postEdit(@Valid NoteInfoForm noteForm, Map<String, Object> map) {
 
-        Note note=new Note();
+        NoteInfo note=new NoteInfo();
         note.setUpdateTime(new Date());
         note.setCreateTime(new Date());
 

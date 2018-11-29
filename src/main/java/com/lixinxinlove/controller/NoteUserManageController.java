@@ -2,9 +2,9 @@ package com.lixinxinlove.controller;
 
 
 import com.lixinxinlove.constant.RedisConstant;
-import com.lixinxinlove.entity.UserInfo;
-import com.lixinxinlove.repository.UserInfoRepository;
-import com.lixinxinlove.service.UserInfoService;
+import com.lixinxinlove.entity.NoteUser;
+import com.lixinxinlove.repository.NoteUserRepository;
+import com.lixinxinlove.service.NoteUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -28,14 +28,14 @@ import java.util.concurrent.TimeUnit;
 @Controller
 @RequestMapping("/user/manage")
 @Slf4j
-public class UserManageController {
+public class NoteUserManageController {
 
 
     @Autowired
-    private UserInfoRepository userInfoRepository;
+    private NoteUserRepository userInfoRepository;
 
     @Autowired
-    private UserInfoService userInfoService;
+    private NoteUserService userInfoService;
 
     @Autowired
     private StringRedisTemplate redisTemplate;
@@ -47,7 +47,7 @@ public class UserManageController {
      */
     @GetMapping("/list")
     public ModelAndView list(Map<String, Object> map) {
-        List<UserInfo> userInfoList = userInfoRepository.findAll();
+        List<NoteUser> userInfoList = userInfoRepository.findAll();
         map.put("userInfoList", userInfoList);
         return new ModelAndView("user/list", map);
     }
@@ -65,10 +65,10 @@ public class UserManageController {
     // @RequestParam("phone") String phone
     // @RequestParam("password") String password
     @PostMapping("/login")
-    public ModelAndView login(UserInfo user, Map<String, Object> map) {
+    public ModelAndView login(NoteUser user, Map<String, Object> map) {
 
         //1.登陆 查用户
-        UserInfo userInfo = userInfoService.findOneByPhoneAndPassword(user.getPhone(), user.getPassword());
+        NoteUser userInfo = userInfoService.findOneByPhoneAndPassword(user.getPhone(), user.getPassword());
         //2.写入缓存
         if (userInfo != null) {
             String mPhone = user.getPhone();
@@ -85,14 +85,14 @@ public class UserManageController {
 
     @GetMapping("/edit")
     public ModelAndView edit(@RequestParam(value = "userId", required = false) String userId, Map<String, Object> map) {
-        UserInfo userInfo = userInfoService.findOne(userId);
+        NoteUser userInfo = userInfoService.findOne(userId);
         map.put("userInfo", userInfo);
         return new ModelAndView("user/edit", map);
     }
 
 
     @PostMapping("/save")
-    public ModelAndView postEdit(@Valid UserInfo user, Map<String, Object> map) {
+    public ModelAndView postEdit(@Valid NoteUser user, Map<String, Object> map) {
 
 
         user.setUpdateTime(new Date());

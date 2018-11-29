@@ -4,7 +4,7 @@ package com.lixinxinlove.form;
 import lombok.Data;
 
 @Data
-public class NoteForm {
+public class NoteInfoForm {
 
     private String noteId;
 

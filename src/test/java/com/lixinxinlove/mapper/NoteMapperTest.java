@@ -1,8 +1,8 @@
 package com.lixinxinlove.mapper;
 
 
-import com.lixinxinlove.entity.Note;
-import com.lixinxinlove.entity.mapper.NoteMapper;
+import com.lixinxinlove.entity.NoteInfo;
+import com.lixinxinlove.entity.mapper.NoteInfoMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
@@ -21,7 +21,7 @@ import java.util.Map;
 public class NoteMapperTest {
 
     @Autowired
-    private NoteMapper mapper;
+    private NoteInfoMapper mapper;
 
     @Test
     public void insertByMap() throws Exception {
@@ -37,7 +37,7 @@ public class NoteMapperTest {
 
     @Test
     public void insertByObject() throws Exception {
-        Note note = new Note();
+        NoteInfo note = new NoteInfo();
         note.setUserId("0");
         note.setNoteText("mybatis测试222");
         int i = mapper.insertByObject(note);
@@ -48,14 +48,14 @@ public class NoteMapperTest {
 
     @Test
     public void findByUserId() throws Exception {
-        List<Note> notes = mapper.findByUserId("0");
+        List<NoteInfo> notes = mapper.findByUserId("0");
         Assert.assertEquals(5, notes.size());
     }
 
 
     @Test
     public void updateByID() {
-        Note note = mapper.findByNoteId(1);
+        NoteInfo note = mapper.findByNoteId(1);
         int i = mapper.updateByNoteId("updateByID", note.getNoteId());
         Assert.assertEquals(1, i);
     }
@@ -63,7 +63,7 @@ public class NoteMapperTest {
 
     @Test
     public void updateByObject() {
-        Note note = mapper.findByNoteId(1);
+        NoteInfo note = mapper.findByNoteId(1);
         note.setNoteText("updateByObject");
         int i = mapper.updateByObject(note);
         Assert.assertEquals(1, i);
@@ -78,7 +78,7 @@ public class NoteMapperTest {
 
     @Test
     public void selectByNoteId() {
-        Note note = mapper.selectByNoteId(1);
+        NoteInfo note = mapper.selectByNoteId(1);
         System.out.println(note.toString());
         Assert.assertEquals(1, note.getNoteId().intValue());
     }

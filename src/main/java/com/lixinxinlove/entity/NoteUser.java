@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Entity
 @Data
-public class UserInfo {
+public class NoteUser {
 
     @Id
     private String userId;

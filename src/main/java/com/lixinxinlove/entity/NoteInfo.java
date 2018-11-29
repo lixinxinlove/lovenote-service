@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Entity
 @Data
-public class Note {
+public class NoteInfo {
 
     @Id
     @GeneratedValue

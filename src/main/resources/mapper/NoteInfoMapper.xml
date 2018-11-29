@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lixinxinlove.entity.mapper.NoteMapper">
+<mapper namespace="com.lixinxinlove.entity.mapper.NoteInfoMapper">
 
-    <resultMap id="BaseResultMap" type="com.lixinxinlove.entity.Note">
+    <resultMap id="BaseResultMap" type="com.lixinxinlove.entity.NoteInfo">
         <id column="note_id" property="noteId" jdbcType="INTEGER"/>
         <id column="user_id" property="userId" jdbcType="VARCHAR"/>
         <id column="note_text" property="noteText" jdbcType="VARCHAR"/>
@@ -14,7 +14,7 @@
 
     <select id="selectByNoteId"   resultMap="BaseResultMap"  resultType="java.lang.Integer">
          select note_id,user_id,note_text,create_time,update_time
-         from note
+         from note_info
          where note_id = #{noteId,jdbcType=INTEGER}
    </select>
 

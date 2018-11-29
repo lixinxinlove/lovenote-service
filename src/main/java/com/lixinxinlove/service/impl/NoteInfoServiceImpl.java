@@ -1,8 +1,8 @@
 package com.lixinxinlove.service.impl;
 
-import com.lixinxinlove.entity.Note;
-import com.lixinxinlove.repository.NoteRepository;
-import com.lixinxinlove.service.NoteService;
+import com.lixinxinlove.entity.NoteInfo;
+import com.lixinxinlove.repository.NoteInfoRepository;
+import com.lixinxinlove.service.NoteInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,45 +12,45 @@ import java.util.List;
 
 
 @Service
-public class NoteServiceImpl implements NoteService {
+public class NoteInfoServiceImpl implements NoteInfoService {
 
     @Autowired
-    private NoteRepository repository;
+    private NoteInfoRepository repository;
 
 
     @Override
-    public Note findOne(Integer noteId) {
+    public NoteInfo findOne(Integer noteId) {
         return repository.getOne(noteId);
     }
 
     @Override
-    public Note findByNoteId(Integer noteId) {
+    public NoteInfo findByNoteId(Integer noteId) {
         return repository.findByNoteId(noteId);
     }
 
     @Override
-    public List<Note> findAll() {
+    public List<NoteInfo> findAll() {
         return repository.findAll();
     }
 
     @Override
-    public List<Note> findAllByUserId(String userId) {
+    public List<NoteInfo> findAllByUserId(String userId) {
 
         return repository.findByUserId(userId);
     }
 
     @Override
-    public Page<Note> findList(Pageable pageable) {
+    public Page<NoteInfo> findList(Pageable pageable) {
         return repository.findAll(pageable);
     }
 
     @Override
-    public Note save(Note note) {
+    public NoteInfo save(NoteInfo note) {
         return repository.save(note);
     }
 
     @Override
-    public void delete(Note note) {
+    public void delete(NoteInfo note) {
          repository.delete(note);
     }
 }

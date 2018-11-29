@@ -4,7 +4,7 @@ package com.lixinxinlove.vo;
 import lombok.Data;
 
 @Data
-public class NoteOV {
+public class NoteInfoOV {
 
     private String userId;
 
