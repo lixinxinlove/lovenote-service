@@ -26,7 +26,7 @@ public class NoteAuthorizeAspect {
     private StringRedisTemplate redisTemplate;
 
     //切点
-    @Pointcut("execution(public * com.lixinxinlove.controller.User*.*(..))" +
+    @Pointcut("execution(public * com.lixinxinlove.controller.NoteInfo*.*(..))" +
             "&& !execution(public * com.lixinxinlove.controller.NoteUserController.*(..))")
     public void verify() {
     }

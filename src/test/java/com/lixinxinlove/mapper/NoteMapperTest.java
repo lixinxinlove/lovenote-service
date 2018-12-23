@@ -3,6 +3,7 @@ package com.lixinxinlove.mapper;
 
 import com.lixinxinlove.entity.NoteInfo;
 import com.lixinxinlove.entity.mapper.NoteInfoMapper;
+import com.lixinxinlove.utils.SmsUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
@@ -83,5 +84,15 @@ public class NoteMapperTest {
         Assert.assertEquals(1, note.getNoteId().intValue());
     }
 
+
+
+    @Test
+    public void sendSms(){
+        try {
+            SmsUtils.sendSms();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
