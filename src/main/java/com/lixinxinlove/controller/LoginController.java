@@ -46,11 +46,9 @@ public class LoginController {
             String mPhone = phone;
             String token = UUID.randomUUID().toString();
             Integer expire = RedisConstant.EXPIRE;
-
             BeanUtils.copyProperties(userInfo, userInfoOV);
             userInfoOV.setToken(token);
             redisTemplate.opsForValue().set(String.format(RedisConstant.TOKEN_PREFIX, mPhone), token, expire, TimeUnit.SECONDS);
-
             return ResultVOUtil.success(userInfoOV);
         }
     }
@@ -80,7 +78,7 @@ public class LoginController {
             Integer expire = RedisConstant.EXPIRE;
             BeanUtils.copyProperties(userInfo, userInfoOV);
             userInfoOV.setToken(token);
-            //redisTemplate.opsForValue().set(String.format(RedisConstant.TOKEN_PREFIX, mPhone), token, expire, TimeUnit.SECONDS);
+            redisTemplate.opsForValue().set(String.format(RedisConstant.TOKEN_PREFIX, mPhone), token, expire, TimeUnit.SECONDS);
             return ResultVOUtil.success(userInfoOV);
         }
     }
