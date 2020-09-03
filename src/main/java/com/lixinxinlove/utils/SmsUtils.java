@@ -19,8 +19,8 @@ public class SmsUtils  {
     static  final String product = "Dysmsapi";//短信API产品名称（短信产品名固定，无需修改）
     static  final String domain = "dysmsapi.aliyuncs.com";//短信API产品域名（接口地址固定，无需修改）
     //替换成你的AK
-    static   final String accessKeyId = "LTAIP2vF12fEK36Q";//你的accessKeyId,参考本文档步骤2
-    static  final String accessKeySecret = "xVGZAkgNxh9sSKzUrJGBMDy30l1wb4";//你的accessKeySecret，参考本文档步骤2
+    static   final String accessKeyId = "LTAIP2vF12fE-------K36Q";//你的accessKeyId,参考本文档步骤2
+    static  final String accessKeySecret = "xVGZAkgN------xh9sSKzUr-----JGBM-------Dy30l1wb4";//你的accessKeySecret，参考本文档步骤2
 
     public static void sendSms() throws Exception{
         //设置超时时间-可自行调整
